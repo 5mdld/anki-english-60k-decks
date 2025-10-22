@@ -2,7 +2,7 @@
 
 **An extensive English vocabulary deck featuring 60,000 high-frequency English words. Each word is enriched with definitions, example sentences, and pronunciation audio from Merriam-Webster's Learner's Dictionary.**
 
-[👉 Download from AnkiWeb](https://ankiweb.net/shared/info/365554322) | [👉 View on GitHub](https://github.com/5mdld/anki-mwld-freq60k)
+[![AnkiWeb - Download](https://img.shields.io/badge/AnkiWeb-Download-1E4C8C?logo=anki)](https://ankiweb.net/shared/info/365554322)   [![GitHub - Repo](https://img.shields.io/badge/GitHub-Repo-181717?logo=github)](https://github.com/5mdld/anki-english-60k-decks)   [![Telegram - JoinChat](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+Kn4Ftwn5yrU3OWZk)
 
 ---
 
