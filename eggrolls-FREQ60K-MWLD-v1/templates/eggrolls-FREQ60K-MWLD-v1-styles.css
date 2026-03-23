@@ -1,5 +1,3 @@
-/* CSS Custom Properties (Theme System) */
-
 :root {
   --fg: #1f2937;
   --fg-subtle: #6b7280;
@@ -59,7 +57,6 @@
   --line-height-relaxed: 1.625;
 }
 
-/* Responsive Font Sizes */
 @media (min-width: 521px) {
   :root {
     --text-xs: 14px;
@@ -74,7 +71,6 @@
   }
 }
 
-/* Basic Style Reset */
 *,
 ::after,
 ::before {
@@ -202,8 +198,11 @@ ul, ol {
   border-radius: calc(var(--border-radius) / 2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  line-height: 1;
-  white-space: nowrap;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  min-width: 0;
   height: fit-content;
   align-self: baseline;
   vertical-align: baseline;
@@ -444,7 +443,6 @@ ul, ol {
   left: 0;
 }
 
-/* Default state */
 .example-item i,
 .example-text i {
   color: inherit;
@@ -459,7 +457,6 @@ ul, ol {
   font-weight: 700;
 }
 
-/* Color highlighting only when parent has processed class */
 .example-item.processed i:not(.in-brackets),
 .example-text.processed i:not(.in-brackets) {
   color: var(--example-highlight);
@@ -513,7 +510,6 @@ ul, ol {
   transform: none;
 }
 
-/* Mobile Optimization */
 @media (max-width: 520px) {
   :root {
     --card-padding-inline: calc(var(--spacing-base) - var(--spacing-xs));
@@ -555,19 +551,19 @@ ul, ol {
   }
 }
 
-/* Mobile Border Handling */
+/* Mobile hosts already render edge-to-edge, so keep the card flush to the viewport. */
 .ios .card,
 .android .card {
   border-radius: 0;
   margin: 0;
 }
 
-/* iOS Specific Styles */
+/* Reserve space for the home indicator so content is not obscured on iOS. */
 .ios .card {
   padding-bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom));
 }
 
-/* AnkiWeb Style Adaptation */
+/* AnkiWeb injects its own wrapper styles, so normalize them back to the deck layout. */
 #quiz {
   --canvas: #fff;
 }
@@ -587,7 +583,7 @@ ul, ol {
   display: none !important;
 }
 
-/* Accessibility (Reduced Motion) */
+/* Respect reduced-motion preferences by disabling purely decorative transitions. */
 @media (prefers-reduced-motion: reduce) {
   .audio-button svg path {
     transition: none;
@@ -600,7 +596,7 @@ ul, ol {
   }
 }
 
-/* Dark Mode CSS Variables */
+/* Override only theme tokens so component styles stay shared across light and dark modes. */
 :root.night-mode,
 :root .night_mode,
 :root .nightMode,

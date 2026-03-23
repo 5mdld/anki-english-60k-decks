@@ -1,7 +1,6 @@
 <!-- Card1 Back -->
 
 <article class="card">
-  <!-- Card Header: Word + Part of Speech -->
   <header class="card-header">
     <h1 class="word">{{Word}}</h1>
     <span class="pos-badge {{^PoS}}is-empty{{/PoS}}">
@@ -14,7 +13,6 @@
     </a>
   </header>
 
-  <!-- Pronunciation and Audio -->
   <section class="pronunciation-audio">
     {{#IPA}}<span class="pronunciation">/{{IPA}}/</span>{{/IPA}}
     
@@ -33,7 +31,6 @@
     </button>
   </section>
 
-  <!-- Grammar Information -->
   {{#Label}}
   <div class="headword-info-tags">
     <span class="grammar">{{Label}}</span>
@@ -42,14 +39,12 @@
 
   <hr class="divider">
 
-  <!-- Definition Section -->
   <section class="definition-section">
     <div class="definition-content" data-translation="{{DefinitionTR}}">{{Definition}}</div>
   </section>
 
   <hr class="divider">
 
-  <!-- Example Sentences Section -->
   <section class="examples-section">
     <ul class="examples-list">
       {{#Example1}}
@@ -107,7 +102,6 @@
 </article>
 
   <script>
-  // Example TTS functionality
   function setExampleTTS() {
     const ttsConfig = {
       domain: [
@@ -170,13 +164,38 @@
     });
   }
 
-  // Local translation functionality
+  function getTranslateButtonDefaultIcon() {
+    return '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M12.913 17H20.087M12.913 17L11 21M12.913 17L15.7783 11.009C16.0092 10.5263 16.1246 10.2849 16.2826 10.2086C16.4199 10.1423 16.5801 10.1423 16.7174 10.2086C16.8754 10.2849 16.9908 10.5263 17.2217 11.009L20.087 17M20.087 17L22 21M2 5H8M8 5H11.5M8 5V3M11.5 5H14M11.5 5C11.0039 7.95729 9.85259 10.6362 8.16555 12.8844M10 14C9.38747 13.7248 8.76265 13.3421 8.16555 12.8844M8.16555 12.8844C6.81302 11.8478 5.60276 10.4266 5 9M8.16555 12.8844C6.56086 15.0229 4.47143 16.7718 2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>';
+  }
+
+  function getTranslateButtonActiveIcon() {
+    return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  function setTranslateButtonState(btn, isTranslated) {
+    if (!btn) return;
+    btn.innerHTML = isTranslated ? getTranslateButtonActiveIcon() : getTranslateButtonDefaultIcon();
+    btn.title = isTranslated ? 'Click to hide translation' : 'Click to translate';
+  }
+
   function translateContent() {
     const btn = document.getElementById('translateBtn');
-    const defContent = document.querySelector('.definition-content');
-    const exampleLis = document.querySelectorAll('.example-sentence');
+    const card = document.querySelector('article.card');
+    const defContent = card?.querySelector('.definition-content');
+    const exampleLis = card?.querySelectorAll('.example-sentence');
+    if (!btn || !card || !defContent || !exampleLis) return;
 
-    // Display definition translation
+    const existingTranslations = card.querySelectorAll('.translation-container');
+    if (existingTranslations.length > 0) {
+      existingTranslations.forEach(node => node.remove());
+      setTranslateButtonState(btn, false);
+      return;
+    }
+
     const defCN = defContent.dataset.translation?.trim();
     if (defCN && !defContent.nextElementSibling?.classList.contains('translation-container')) {
       defContent.insertAdjacentHTML(
@@ -189,8 +208,7 @@
          </div>`
       );
     }
-    
-    // Display example translations
+
     exampleLis.forEach(li => {
       const exCN = li.dataset.translation?.trim();
       if (exCN && !li.querySelector('.translation-container')) {
@@ -205,12 +223,8 @@
         );
       }
     });
-    
-    // Update button icon to checkmark
-    btn.innerHTML =
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" ' +
-      'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    setTranslateButtonState(btn, true);
   }
 
   function markTagsInBrackets() {
@@ -268,6 +282,7 @@
     markDefinitionBrackets();
     const btn = document.getElementById('translateBtn');
     if (btn) {
+      setTranslateButtonState(btn, !!document.querySelector('article.card .translation-container'));
       btn.removeEventListener('click', translateContent);
       btn.addEventListener('click', translateContent);
     }
