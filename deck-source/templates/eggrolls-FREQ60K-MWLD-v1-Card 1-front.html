@@ -1,0 +1,144 @@
+<!-- Card1 Front -->
+
+<article class="card">
+  <header class="card-header">
+    <h1 class="word">{{Word}}</h1>
+    <span class="pos-badge {{^PoS}}is-empty{{/PoS}}">
+      {{#PoS}}{{PoS}}{{/PoS}}
+      {{^PoS}}&nbsp;{{/PoS}}
+    </span>
+    <a href="https://www.merriam-webster.com/dictionary/{{Word}}" class="search-button" title="Search in Merriam-Webster" target="_blank">
+      <img src="_logo-light.svg" alt="Merriam-Webster" class="logo-light">
+      <img src="_logo-dark.svg" alt="Merriam-Webster" class="logo-dark">
+    </a>
+  </header>
+
+  <section class="pronunciation-audio">
+    {{#IPA}}<span class="pronunciation">/{{IPA}}/</span>{{/IPA}}
+    
+    {{#Audio}}
+    <span class="audio-button" onclick="new Audio('{{Audio}}').play();">
+      <svg width="100%" height="100%" viewBox="0 0 24 24">
+        <path d="M5.25 9v6h4l5 5V4L9.25 9H5.25z M18.75 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>
+    </span>
+    {{/Audio}}
+  </section>
+
+  <hr class="divider">
+
+  <div class="front-example-wrapper">
+    <section class="examples-section">
+      <ul class="examples-list">
+        <li class="example-item front-random-example hidden"></li>
+      </ul>
+      <div class="front-example-candidates" hidden>
+        {{#Example1}}<span class="front-example-candidate">{{Example1}}</span>{{/Example1}}
+        {{#Example2}}<span class="front-example-candidate">{{Example2}}</span>{{/Example2}}
+        {{#Example3}}<span class="front-example-candidate">{{Example3}}</span>{{/Example3}}
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function() {
+      const runtime = window.__mwldFrontRuntime || (window.__mwldFrontRuntime = {});
+      const renderToken = (runtime.renderToken || 0) + 1;
+      runtime.renderToken = renderToken;
+
+      function cleanExampleSentenceForCoca(sentenceHTML) {
+        if (typeof sentenceHTML !== 'string' || !sentenceHTML) return "";
+
+        let cleaned = sentenceHTML;
+        cleaned = cleaned.replace(/\[.*?\]/g, '');
+
+        const equalsIndex = cleaned.indexOf('=');
+        if (equalsIndex !== -1) {
+          cleaned = cleaned.substring(0, equalsIndex);
+        }
+
+        cleaned = cleaned.replace(/\s+/g, ' ');
+        return cleaned.trim();
+      }
+
+      function updateSearchButtonUrl() {
+        const searchButton = document.querySelector('a.search-button');
+        const word = document.querySelector('.word')?.textContent?.trim();
+        if (!searchButton || !word) return;
+        searchButton.href = `https://www.merriam-webster.com/dictionary/${encodeURIComponent(word)}`;
+      }
+
+      function renderRandomExample() {
+        const wrapper = document.querySelector('.front-example-wrapper');
+        if (!wrapper) return;
+
+        const candidates = Array.from(wrapper.querySelectorAll('.front-example-candidate'))
+          .map(node => node.innerHTML)
+          .filter(Boolean);
+
+        if (!candidates.length) {
+          wrapper.remove();
+          return;
+        }
+
+        const target = wrapper.querySelector('.front-random-example');
+        if (!target) return;
+
+        const selectedIndex = Date.now() % candidates.length;
+        target.innerHTML = candidates[selectedIndex];
+        target.classList.remove('hidden');
+      }
+
+      function processExamples() {
+        const exampleItems = document.querySelectorAll('article.card .examples-section .example-item');
+        exampleItems.forEach(item => {
+          if (item.dataset.processed === 'true') return;
+
+          if (item.innerHTML) {
+            const originalHTML = item.innerHTML;
+            const cleanedHTML = cleanExampleSentenceForCoca(originalHTML);
+            if (originalHTML !== cleanedHTML) {
+              item.innerHTML = cleanedHTML;
+            }
+          }
+
+          const html = item.innerHTML;
+          const updatedHTML = html.replace(/(\([^)]*\)|\[[^\]]*\])/g, (match) => {
+            return match.replace(/<(i|b)(\s[^>]*)?>([^<]*)<\/(i|b)>/g, (tagMatch, tag1, attrs, content, tag2) => {
+              const hasClass = attrs && attrs.includes('class=');
+              if (hasClass) {
+                return tagMatch.replace(/class="([^"]*)"/, 'class="$1 in-brackets"');
+              }
+              const attributePart = attrs || '';
+              return `<${tag1}${attributePart} class="in-brackets">${content}</${tag2}>`;
+            });
+          });
+          if (html !== updatedHTML) {
+            item.innerHTML = updatedHTML;
+          }
+          item.classList.add('processed');
+          item.dataset.processed = 'true';
+        });
+
+      }
+
+      function initializeFront() {
+        if (runtime.renderToken !== renderToken || runtime.initializedToken === renderToken) {
+          return;
+        }
+
+        updateSearchButtonUrl();
+        renderRandomExample();
+        processExamples();
+        runtime.initializedToken = renderToken;
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeFront, { once: true });
+      } else {
+        initializeFront();
+      }
+    })();
+  </script>
+
+</article>
