@@ -510,6 +510,12 @@ ul, ol {
   transform: none;
 }
 
+@media (pointer: coarse) {
+  .pronunciation-audio {
+    --audio-button-size: 48px;
+  }
+}
+
 @media (max-width: 520px) {
   :root {
     --card-padding-inline: calc(var(--spacing-base) - var(--spacing-xs));
