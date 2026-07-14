@@ -5,7 +5,7 @@
 <div align="center">
 
 [![AnkiWeb - Alt](https://img.shields.io/badge/AnkiWeb-Alt-2e6ce6?labelColor=0b3d91&style=for-the-badge&logo=anki&logoColor=white)](https://ankiweb.net/shared/info/365554322)
-[![Telegram - Join](https://img.shields.io/badge/Telegram-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+Kn4Ftwn5yrU3OWZk)
+[![Telegram - Join](https://img.shields.io/badge/Telegram-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://telegram.me/+Kn4Ftwn5yrU3OWZk)
 
 </div>
 
