@@ -100,11 +100,40 @@ eggrolls-FREQ60K-MWLD
 
 ## 📜 Licensing & Third-Party Content Notice
 
-The deck content is based on Merriam-Webster's Learner's Dictionary and Wiktionary resources.
+This repository and deck contain materials governed by different terms; no
+single license applies to the whole project. See the full [LICENSE](LICENSE)
+for scope and reuse conditions.
 
-- **Merriam-Webster:** Dictionary data, definitions, and audio pronunciations: © Merriam-Webster, Incorporated. All rights reserved. Merriam-Webster content is **NOT** included under this project's open-source license and must comply with Merriam-Webster's Dictionary API Terms of Service and Brand Guidelines. Your use must remain non-commercial, and you must maintain the Merriam-Webster logo visibly in any derivative use.
+- **Original materials by 5mdld:** To the extent that 5mdld owns the relevant
+  rights, original documentation, translations, selection and organization,
+  card design, templates, code, and other original contributions are
+  dedicated to the public domain under
+  [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+  This does not include third-party material or rights that 5mdld does not
+  own.
 
-- **Wiktionary (Kaikki.org):** Supplementary IPA and audio data are derived from Wiktionary via Kaikki.org and are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+- **Wiktionary text and Kaikki.org structured data:** Derived text and data are
+  redistributed under
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), with
+  attribution to English Wiktionary contributors and Kaikki.org. The data has
+  been filtered, reorganized, and formatted for this deck. Reuse must preserve
+  attribution, indicate changes, link the license, and follow its ShareAlike
+  requirements.
+
+- **Wiktionary/Wikimedia audio and other media:** Each file retains the
+  file-specific license and attribution requirements shown on its original
+  source page. These files are not automatically covered by CC BY-SA 4.0 or
+  CC0; verify each file before reuse.
+
+- **Merriam-Webster:** Definitions, examples, pronunciation data, audio,
+  logos, product names, and trademarks are © Merriam-Webster, Incorporated
+  and/or its licensors. They are excluded from CC0 and CC BY-SA 4.0, and this
+  repository grants no rights to them. Downloading the repository or deck
+  does not itself grant permission to redistribute or commercially use that
+  material. Any use must independently comply with the
+  [Dictionary API Terms of Service](https://dictionaryapi.com/info/terms-of-service),
+  [Brand Guidelines](https://dictionaryapi.com/info/branding-guidelines),
+  applicable law, and any separate written permission that may be required.
 
 ---
 

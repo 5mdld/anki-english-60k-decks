@@ -1,21 +1,83 @@
-MIT License
+# Licensing and Third-Party Materials
 
-Copyright (c) 2025 5mdld
+This repository and the deck it describes contain materials governed by
+different terms. No single license applies to the repository or deck as a
+whole.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 1. Original materials: CC0 1.0
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+To the extent that 5mdld owns copyright or related rights in a material, and
+except where another source or license is identified, that material is
+dedicated to the public domain under the
+[CC0 1.0 Universal Public Domain Dedication][cc0].
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This dedication includes 5mdld's original documentation, translations,
+selection and organization, card design, templates, code, and other original
+contributions. CC0 permits reuse for any purpose, including commercial use,
+without requiring permission or attribution.
+
+The dedication applies only to rights held by 5mdld. It does not apply to any
+third-party material, trademark, patent, privacy or publicity right, or other
+right that 5mdld does not own.
+
+## 2. Wiktionary and Kaikki.org data: CC BY-SA 4.0
+
+Text and structured data derived from English Wiktionary through Kaikki.org
+are redistributed under the
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+This project has filtered, reorganized, and formatted that data for use in
+Anki cards.
+
+When reusing this material, you must comply with CC BY-SA 4.0, including its
+attribution, license-link, change-indication, and ShareAlike requirements.
+Attribution should identify English Wiktionary contributors and Kaikki.org
+and link to the relevant source where reasonably practicable.
+
+Kaikki.org states that its extracted data is available under the same
+licenses as Wiktionary—CC BY-SA and the GNU Free Documentation License. This
+project relies on the CC BY-SA 4.0 option described above.
+
+## 3. Audio and other media
+
+Audio and other media obtained from Wiktionary or Wikimedia Commons do not
+necessarily use the license that applies to Wiktionary text. Each file
+retains the file-specific license and attribution requirements stated on its
+source page.
+
+Such media is not covered by the CC0 dedication or by the blanket CC BY-SA
+4.0 notice above unless the individual file's source information expressly
+says so. Before reusing a media file, verify its source, author, license, and
+required attribution.
+
+## 4. Merriam-Webster materials
+
+Merriam-Webster definitions, example sentences, pronunciation data, audio,
+logos, product names, and trademarks are © Merriam-Webster, Incorporated
+and/or its licensors.
+
+These materials are excluded from the CC0 dedication and the CC BY-SA 4.0
+license in this repository. No Merriam-Webster rights are granted by this
+LICENSE. Possessing or downloading this repository or deck does not itself
+grant permission to copy, modify, redistribute, sublicense, or commercially
+use Merriam-Webster material.
+
+Any use of Merriam-Webster material must independently comply with applicable
+law, the [Merriam-Webster Dictionary API Terms of Service][mw-terms], the
+[Merriam-Webster Brand Guidelines][mw-brand], and any separate written
+permission that may be required. Anyone redistributing the repository or deck
+is responsible for obtaining the necessary permission or removing the
+Merriam-Webster material.
+
+## 5. No endorsement or warranty
+
+The names and trademarks of third parties are used only to identify sources.
+No endorsement by Merriam-Webster, Wikimedia, Wiktionary, Kaikki.org, or any
+other third party is implied.
+
+Materials are provided as-is, without warranties of any kind, to the fullest
+extent permitted by law.
+
+[cc0]: https://creativecommons.org/publicdomain/zero/1.0/legalcode.en
+[cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/legalcode.en
+[mw-terms]: https://dictionaryapi.com/info/terms-of-service
+[mw-brand]: https://dictionaryapi.com/info/branding-guidelines
