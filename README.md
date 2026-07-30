@@ -5,7 +5,6 @@
 <div align="center">
 
 [![AnkiWeb - Alt](https://img.shields.io/badge/AnkiWeb-Alt-2e6ce6?labelColor=0b3d91&style=for-the-badge&logo=anki&logoColor=white)](https://ankiweb.net/shared/info/365554322)
-[![Telegram - Join](https://img.shields.io/badge/Telegram-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://telegram.me/+Kn4Ftwn5yrU3OWZk)
 
 </div>
 
@@ -145,7 +144,7 @@ Special thanks to:
 
 * [Kaikki.org](https://kaikki.org/) - Wiktionary data extract used for supplementary IPA and audio
 
-* Telegram user `@KarasawaKoko` - for providing the TTS audio server.
+* `@KarasawaKoko` - for providing the TTS audio server.
 
 * [Ecattea/COCA-English-Anki-Deck](https://github.com/Ecattea/COCA-English-Anki-Deck) - for structural and workflow inspiration.
 
