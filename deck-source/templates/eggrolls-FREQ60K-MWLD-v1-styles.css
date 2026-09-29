@@ -9,7 +9,6 @@
   --pos-bg: #dbeafe;
   --pos-color: #1e40af;
   --pronunciation-color: #374151;
-  --audio-hover-color: #1f2937;
   --definition-color: #374151;
   --definition-bracket-color: #64748b;
   --definition-bracket-bg: transparent;
@@ -17,22 +16,17 @@
   --example-highlight: #3b82f6;
   --grammar-color: #14B8A6;
   --grammar-bg: rgba(20, 184, 166, 0.1);
-  --hr-color: #9ca3af;
-  --translation-label-color: var(--example-highlight);
-  --translation-line-color: rgba(59, 130, 246, 0.72);
+  --hr-color: #e5e7eb;
   
   --svg-path: #6b7280;
   
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --font-serif: Georgia Regular;
-  
-  --text-xs: 12px;
+  --font-serif: Georgia, serif;
+  --font-chinese: "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans SC", "Roboto", "Microsoft YaHei", "Microsoft JhengHei", "SimSun", "SimHei", "WenQuanYi Micro Hei", "WenQuanYi Zen Hei", "Source Han Sans SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", serif;
   --text-sm: 14px;
   --text-base: 16px;
   --text-lg: 18px;
   --text-xl: 20px;
-  --text-2xl: 24px;
-  --text-3xl: 30px;
   --text-4xl: 36px;
   --text-5xl: 48px;
   
@@ -45,9 +39,9 @@
   --spacing-sm: 8px;
   --spacing-base: 16px;
   --spacing-lg: 24px;
-  --spacing-xl: 32px;
   
   --audio-button-size: 1.65em;
+  --card-padding-block: var(--spacing-base);
   --card-padding-inline: calc(var(--spacing-base) + 2px);
   --search-button-offset: 4px;
   --pos-bottom-offset: 2px;
@@ -59,13 +53,10 @@
 
 @media (min-width: 521px) {
   :root {
-    --text-xs: 14px;
     --text-sm: 16px;
     --text-base: 18px;
     --text-lg: 20px;
     --text-xl: 22px;
-    --text-2xl: 26px;
-    --text-3xl: 32px;
     --text-4xl: 40px;
     --text-5xl: 52px;
   }
@@ -91,7 +82,7 @@ body {
 }
 
 :lang(zh-Hans) {
-  font-family: "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans SC", "Roboto", "Microsoft YaHei", "Microsoft JhengHei", "SimSun", "SimHei", "WenQuanYi Micro Hei", "WenQuanYi Zen Hei", "Source Han Sans SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", serif;
+  font-family: var(--font-chinese);
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -107,18 +98,19 @@ ul, ol {
   padding: 0;
 }
 
-.card {
+article.card {
   position: relative;
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
-  padding: var(--spacing-base) var(--card-padding-inline) calc(var(--spacing-lg) - var(--spacing-xs));
+  padding: var(--card-padding-block) var(--card-padding-inline) calc(var(--spacing-lg) - var(--spacing-xs));
   background-color: var(--canvas);
   border-radius: var(--border-radius);
   color: var(--fg);
   text-align: left;
   font-size: var(--text-base);
   line-height: var(--line-height-normal);
+  overflow-wrap: anywhere;
 }
 
 .search-button {
@@ -133,12 +125,7 @@ ul, ol {
   height: 50px;
   cursor: pointer;
   border-radius: 8px;
-  transition: opacity 0.2s ease;
   text-decoration: none;
-}
-
-.search-button:hover {
-  opacity: 0.8;
 }
 
 .logo-light,
@@ -222,9 +209,9 @@ ul, ol {
 
 .grammar {
   color: var(--grammar-color);
-  font-size: var(--text-sm);
-  font-style: italic;
-  font-weight: 500;
+  font-size: calc(var(--text-sm) - 1px);
+  font-style: normal;
+  font-weight: 400;
   line-height: 1.4;
   font-family: var(--font-family);
   padding: 4px 8px;
@@ -291,40 +278,25 @@ ul, ol {
 
 .audio-button svg path {
   fill: var(--svg-path);
-  transition: fill 0.2s ease;
-}
-
-.audio-button:hover svg path {
-  fill: var(--audio-hover-color);
 }
 
 .tts-button {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--audio-button-size);
-  height: var(--audio-button-size);
-  border-radius: 50%;
   text-decoration: none;
   color: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: inherit;
-  line-height: 1;
 }
 
 .divider {
   margin: var(--spacing-sm) 0;
   border: none;
   border-top: 1px solid var(--hr-color);
+  height: 0;
+  background: none;
 }
 
 .definition-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   margin-bottom: calc(var(--spacing-base) - var(--spacing-xs));
 }
 
@@ -371,7 +343,7 @@ ul, ol {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
 
 .example-sentence {
@@ -512,19 +484,59 @@ ul, ol {
 
 @media (pointer: coarse) {
   .pronunciation-audio {
-    --audio-button-size: 48px;
+    --audio-button-size: max(48px, 3em);
+    gap: 0;
+  }
+
+  .pronunciation-audio .pronunciation {
+    margin-right: var(--spacing-sm);
+  }
+
+  /* Scale with the text size while retaining a minimum 48px touch target. */
+  .pronunciation-audio .audio-button svg,
+  .pronunciation-audio .translate-button svg {
+    width: 1.625em !important;
+    height: 1.625em !important;
+    flex-shrink: 0;
+  }
+
+  /* Together with the 12px list gap, keep neighboring 48px targets apart. */
+  .example-sentence {
+    min-height: 36px;
+  }
+
+  .example-audio {
+    position: relative;
+    width: 48px;
+    height: calc(1.65em + 2px);
+  }
+
+  .example-audio .audio-button {
+    position: absolute;
+    right: 0;
+    top: calc(2px + (1.65em - 48px) / 2);
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 0;
+    padding-right: 0.0825em;
+  }
+
+  /* Preserve the original 90% icon in a 1.65em button, anchored to the first line. */
+  .example-audio .audio-button svg {
+    width: 1.485em !important;
+    height: 1.485em !important;
+    flex-shrink: 0;
   }
 }
 
 @media (max-width: 520px) {
   :root {
-    --card-padding-inline: calc(var(--spacing-base) - var(--spacing-xs));
+    --card-padding-block: var(--spacing-sm);
+    --card-padding-inline: var(--spacing-base);
   }
 
-  .card {
-    margin: var(--spacing-xs);
-  }
-  
   .word {
     font-size: var(--text-4xl);
   }
@@ -537,35 +549,17 @@ ul, ol {
     border-radius: 50% !important;
   }
 
-  .pronunciation-audio .translate-button {
-    font-size: inherit;
-    padding: 0;
-    margin: 0;
-    margin-left: var(--spacing-xs);
-    width: var(--audio-button-size);
-    height: var(--audio-button-size);
-    background: none !important;
-    border: none !important;
-    border-radius: 0;
-    color: var(--svg-path);
-    box-shadow: none !important;
-  }
-
-  .pronunciation-audio .translate-button svg {
-    width: 80%;
-    height: 80%;
-  }
 }
 
 /* Mobile hosts already render edge-to-edge, so keep the card flush to the viewport. */
-.ios .card,
-.android .card {
+.ios article.card,
+.android article.card {
   border-radius: 0;
   margin: 0;
 }
 
 /* Reserve space for the home indicator so content is not obscured on iOS. */
-.ios .card {
+.ios article.card {
   padding-bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom));
 }
 
@@ -578,8 +572,8 @@ ul, ol {
   margin-top: 0;
 }
 
-#quiz .card {
-  padding: var(--spacing-base) var(--card-padding-inline);
+#quiz article.card {
+  padding: var(--card-padding-block) var(--card-padding-inline);
   margin: 0;
   box-shadow: none;
   border-radius: 0;
@@ -589,20 +583,12 @@ ul, ol {
   display: none !important;
 }
 
-/* Respect reduced-motion preferences by disabling purely decorative transitions. */
-@media (prefers-reduced-motion: reduce) {
-  .audio-button svg path {
-    transition: none;
-  }
-}
-
 @media print {
   .audio-button {
     display: none;
   }
 }
 
-/* Override only theme tokens so component styles stay shared across light and dark modes. */
 :root.night-mode,
 :root .night_mode,
 :root .nightMode,
@@ -616,7 +602,6 @@ ul, ol {
   --pos-bg: #1e40af;
   --pos-color: #dbeafe;
   --pronunciation-color: #e5e7eb;
-  --audio-hover-color: #f3f4f6;
   --definition-color: #e5e7eb;
   --definition-bracket-color: #94a3b8;
   --definition-bracket-bg: transparent;
@@ -625,21 +610,8 @@ ul, ol {
   --grammar-color: #34d399;
   --grammar-bg: rgba(52, 211, 153, 0.14);
   --hr-color: #374151;
-  --translation-label-color: var(--example-highlight);
-  --translation-line-color: rgba(96, 165, 250, 0.72);
   
   --svg-path: #d1d5db;
-}
-
-.translate-button:hover {
-  background: none !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-.translate-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed !important;
 }
 
 .pronunciation-audio .translate-button svg {
@@ -647,56 +619,25 @@ ul, ol {
   height: 80%;
 }
 
-.pronunciation-audio .translate-button:hover {
-  color: var(--audio-hover-color);
-}
-
 .pronunciation-audio .translate-button:active {
   transform: none;
   box-shadow: none;
 }
 
-.pronunciation-audio .translate-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
 .translation {
-  opacity: 0.75;
   display: flex;
   align-items: baseline;
   gap: 4px;
   line-height: var(--line-height-normal);
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-bottom: 2px;
-  font-weight: 500;
-  font-family: "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans SC", "Roboto", "Microsoft YaHei", "Microsoft JhengHei", "SimSun", "SimHei", "WenQuanYi Micro Hei", "WenQuanYi Zen Hei", "Source Han Sans SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", serif;
+  margin: 0 0 2px;
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-family: var(--font-chinese);
+  opacity: 0.68;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: var(--fg);
-}
-
-.translation-definition {
-  margin-top: 0;
-  margin-bottom: 2px;
-  padding: 0;
-  font-size: var(--text-sm);
-  margin-left: 0;
-  opacity: 0.68;
-  line-height: var(--line-height-normal);
-}
-
-.translation-example {
-  font-size: var(--text-sm);
-  margin-top: 0;
-  margin-bottom: 2px;
-  margin-left: 0;
-  line-height: var(--line-height-normal);
-  opacity: 0.68;
 }
 
 .translation-definition:last-child,
@@ -706,29 +647,22 @@ ul, ol {
 
 .translation-container {
   margin-top: 2px;
-  padding: 6px var(--spacing-sm) 6px 8px;
-  border-left: 1.5px solid var(--translation-line-color);
+  padding: 0 var(--spacing-sm) 0 0;
   background: none;
 }
 
 .definition-section .translation-container {
   margin-top: 0;
-  padding: 4px var(--spacing-sm) 4px 8px;
+  padding: 0 var(--spacing-sm) 0 0;
 }
 
 .example-sentence .translation-container {
   margin-top: 0;
-  padding: 4px var(--spacing-sm) 4px 8px;
+  padding: 0 var(--spacing-sm) 0 var(--spacing-base);
 }
 
 .translation-container:empty {
   display: none;
-}
-
-.lang-label {
-  font-weight: 600;
-  color: var(--translation-label-color);
-  flex: 0 0 auto;
 }
 
 .translation-body {
@@ -738,18 +672,6 @@ ul, ol {
   overflow-wrap: break-word;
 }
 
-:root.night-mode .pronunciation-audio .translate-button:hover,
-:root .night_mode .pronunciation-audio .translate-button:hover,
-:root .nightMode .pronunciation-audio .translate-button:hover,
-[data-bs-theme='dark'] .pronunciation-audio .translate-button:hover {
-  color: var(--audio-hover-color);
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pronunciation-audio .translate-button[aria-pressed="true"] {
+  color: var(--example-highlight);
 }
