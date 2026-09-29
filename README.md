@@ -32,7 +32,7 @@
 
 * **Clean & Focused Design**
 
-  ![Card Preview](https://pub-90b0b2afa26447b8b824c3d05d8e274f.r2.dev/uPic/20260319vgLPzn.png)
+  ![Card Preview](https://pub-90b0b2afa26447b8b824c3d05d8e274f.r2.dev/uPic/202609294rS8Zv.png)
 
 * **Audio Pronunciations**
 
